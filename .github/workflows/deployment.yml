@@ -55,6 +55,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     environment: dev
+    
     steps:   
       - name: Deploy to Render.com server over ssh
       uses: appleboy/ssh-action@v1.0.0
