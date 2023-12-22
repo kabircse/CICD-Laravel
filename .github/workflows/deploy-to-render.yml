@@ -22,36 +22,24 @@ jobs:
         path: 'src'
 
     - name: Install Dependencies
-      run: |
-        cd src
-        composer install --verbose --no-ansi --no-interaction --no-scripts --no-progress --no-dev
+      run: composer install --verbose --no-ansi --no-interaction --no-scripts --no-progress --no-dev
       # -q
     - name: Copy .env
-      run: |
-        cd src
-        php -r "file_exists('.env') || copy('.env.example', '.env');"
+      run: php -r "file_exists('.env') || copy('.env.example', '.env');"
         
     - name: Generate key
-      run: |
-        cd src
-        php artisan key:generate
+      run: php artisan key:generate
     - name: Directory Permissions
-      run:  |
-        cd src
-        chmod -R 777 storage bootstrap/cache
+      run: chmod -R 777 storage bootstrap/cache
     - name: Create Database
-      run: |
-        cd src
-        mkdir -p database
+      run: mkdir -p database
         touch database/database.sqlite
         
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       env:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
-      run: |
-        cd src
-        vendor/bin/phpunit
+      run: vendor/bin/phpunit
       working-directory: src
 
     - name: Deploy to Render.com server
