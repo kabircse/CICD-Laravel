@@ -54,7 +54,8 @@ jobs:
 
       - name: Display Secret
         run: |
-          echo "${{ secrets.RENDER_SSH_KEY }}"
+          var "${{ secrets.RENDER_USER }}"
+          echo "${{ secrets.RENDER_HOST }}"
           
       - name: Deploy to Render.com server
         uses: easingthemes/ssh-deploy@v2
