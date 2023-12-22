@@ -55,8 +55,8 @@ jobs:
       - name: Deploy to Render.com server
         uses: easingthemes/ssh-deploy@v2
         with:
-          server: cicd-laravel-server  # Replace with your Render SSH server
-          #username: render  # Replace with your Render SSH username
+          # server: cicd-laravel-server  # Replace with your Render SSH server
+          # username: render  # Replace with your Render SSH username
           SSH_PRIVATE_KEY: ${{ secrets.RENDER_SSH_KEY }}
           REMOTE_HOST: ${{ secrets.RENDER_HOST }}
           REMOTE_USER: ${{ secrets.RENDER_USER }}
