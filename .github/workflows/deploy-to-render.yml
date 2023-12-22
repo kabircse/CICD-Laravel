@@ -23,7 +23,8 @@ jobs:
     - name: Install Dependencies
       run: |
         cd src
-        composer install --verbose -q --no-ansi --no-interaction --no-scripts --no-progress --no-dev
+        composer install --verbose --no-ansi --no-interaction --no-scripts --no-progress --no-dev
+      # -q
         
     - name: Generate key
       run: php artisan key:generate
