@@ -9,7 +9,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     environment: dev        # dev environment for value retrieving
 
@@ -57,12 +56,12 @@ jobs:
     runs-on: ubuntu-latest
     environment: dev
     steps:   
-        - name: Deploy to Render.com server over ssh
-        uses: appleboy/ssh-action@v1.0.0
-        with:
-          host: ${{ secrets.RENDER_HOST }}
-          username: ${{ secrets.RENDER_USER }}
-          key: ${{ secrets.RENDER_SSH_KEY }}
-          script: whoami
-          # source: src                          #source directory that needs to be transferred/deployed to the target server.
-          # target: /var/www/html/your-app      #Where the project will be deployed on the server
+      - name: Deploy to Render.com server over ssh
+      uses: appleboy/ssh-action@v1.0.0
+      with:
+        host: ${{ secrets.RENDER_HOST }}
+        username: ${{ secrets.RENDER_USER }}
+        key: ${{ secrets.RENDER_SSH_KEY }}
+        script: whoami
+        # source: src                          #source directory that needs to be transferred/deployed to the target server.
+        # target: /var/www/html/your-app      #Where the project will be deployed on the server
