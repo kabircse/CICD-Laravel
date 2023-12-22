@@ -22,10 +22,9 @@ jobs:
 
       - name: Run commands in the nested folder  
         working-directory: src
-
-      - name: Install Dependencies
         run: composer install --verbose --no-ansi --no-interaction --no-scripts --no-progress --no-dev
         # -q
+        
       - name: Copy .env
         run: php -r "file_exists('.env') || copy('.env.example', '.env');"
           
