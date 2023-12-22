@@ -38,9 +38,9 @@ jobs:
     - name: Deploy to Render.com server
         uses: easingthemes/ssh-deploy@v2
         with:
-          server: your-render-instance.compute-render.com  # Replace with your Render SSH server
-          username: render  # Replace with your Render SSH username
+          server: cicd-laravel-server  # Replace with your Render SSH server
+          #username: render  # Replace with your Render SSH username
           key: ${{ secrets.RENDER_SSH_KEY }}
-          args: '-o StrictHostKeyChecking=no'  # Optional: Skip host key checking
+          #args: '-o StrictHostKeyChecking=no'  # Optional: Skip host key checking
           source: ./src                          #source directory that needs to be transferred/deployed to the target server.
-          target: /var/www/html/your-app      #Where the project will be deployed on the server
+          #target: /var/www/html/your-app      #Where the project will be deployed on the server
