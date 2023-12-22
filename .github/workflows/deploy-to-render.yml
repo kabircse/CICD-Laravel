@@ -11,7 +11,7 @@ jobs:
   laravel-tests:
 
     runs-on: ubuntu-latest
-    
+
     env:
       SECRET_TWO: ${{ secrets.RENDER_USER }}
       SECRET_FOUR: ${{ secrets.dev.RENDER_USER }}
@@ -60,8 +60,8 @@ jobs:
         run: |
           echo "${{ secrets.dev.RENDER_USER }}"
           echo "${{ secrets.RENDER_USER }}"
-          echo $SECRET_TWO
-          echo $SECRET_FOUR
+          echo "${{ SECRET_TWO }}"
+          echo "${{ SECRET_FOUR }}"
           
       - name: Deploy to Render.com server
         uses: easingthemes/ssh-deploy@v2
