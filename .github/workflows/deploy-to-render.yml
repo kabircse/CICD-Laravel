@@ -47,10 +47,10 @@ jobs:
           touch database/database.sqlite
           
       - name: Execute tests (Unit and Feature tests) via PHPUnit
-        working-directory: src
         env:
           DB_CONNECTION: sqlite
           DB_DATABASE: database/database.sqlite
+        working-directory: src
         run: vendor/bin/phpunit
 
       - name: Deploy to Render.com server
