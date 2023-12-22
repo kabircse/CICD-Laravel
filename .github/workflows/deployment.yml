@@ -1,4 +1,4 @@
-# CD to render.com server using a ssh action
+# CI/CD to render.com server
 name: Laravel Application
 
 on:
