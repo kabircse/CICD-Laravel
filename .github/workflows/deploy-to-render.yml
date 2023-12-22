@@ -57,7 +57,9 @@ jobs:
         with:
           server: cicd-laravel-server  # Replace with your Render SSH server
           #username: render  # Replace with your Render SSH username
-          key: ${{ secrets.RENDER_SSH_KEY }}
+          SSH_PRIVATE_KEY: ${{ secrets.RENDER_SSH_KEY }}
+          REMOTE_HOST: ${{ secrets.RENDER_HOST }}
+          REMOTE_USER: ${{ secrets.RENDER_USER }}
           #args: '-o StrictHostKeyChecking=no'  # Optional: Skip host key checking
           source: ./src                          #source directory that needs to be transferred/deployed to the target server.
           #target: /var/www/html/your-app      #Where the project will be deployed on the server
