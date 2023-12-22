@@ -45,7 +45,9 @@ jobs:
       env:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
-      run: vendor/bin/phpunit
+      run: |
+        cd src
+        vendor/bin/phpunit
     
     - name: Deploy to Render.com server
       uses: easingthemes/ssh-deploy@v2
