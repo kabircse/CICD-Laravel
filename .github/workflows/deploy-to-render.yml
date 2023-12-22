@@ -52,6 +52,10 @@ jobs:
       #     DB_DATABASE: database/database.sqlite
       #   run: src/vendor/bin/phpunit
 
+      - name: Display Secret
+        run: |
+          echo "${{ secrets.RENDER_SSH_KEY }}"
+          
       - name: Deploy to Render.com server
         uses: easingthemes/ssh-deploy@v2
         with:
