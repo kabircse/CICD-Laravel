@@ -44,6 +44,7 @@ jobs:
         cd src
         mkdir -p database
         touch database/database.sqlite
+        
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       env:
         DB_CONNECTION: sqlite
@@ -52,6 +53,7 @@ jobs:
         cd src
         vendor/bin/phpunit
       working-directory: src
+
     - name: Deploy to Render.com server
       uses: easingthemes/ssh-deploy@v2
       with:
