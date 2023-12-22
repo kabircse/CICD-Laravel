@@ -1,4 +1,4 @@
-# CD to easingthemes/ssh-deploy in render.com server
+# CD to render.com server using a ssh action
 name: Laravel Application
 
 on:
