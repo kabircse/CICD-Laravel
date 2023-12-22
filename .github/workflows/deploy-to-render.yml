@@ -11,15 +11,9 @@ jobs:
   laravel-tests:
 
     runs-on: ubuntu-latest
-    
-    env:
-      SECRET_TWO: ${{ secrets.RENDER_USER }}
-      SECRET_FOUR: ${{ secrets.dev.RENDER_USER }}
+    environment: dev        # dev environment values retrieve
 
     steps:
-      - run: |
-        echo "{{ $SECRET_TWO }}"
-        echo "{{ $SECRET_FOUR }}"
       - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
         with:
           php-version: '8.2'
@@ -58,13 +52,11 @@ jobs:
       #     DB_CONNECTION: sqlite
       #     DB_DATABASE: database/database.sqlite
       #   run: src/vendor/bin/phpunit
-      
+
       - name: Display Secret
         run: |
-          echo "${{ secrets.dev.RENDER_USER }}"
           echo "${{ secrets.RENDER_USER }}"
-          echo "{{ $SECRET_TWO }}"
-          echo "{{ $SECRET_FOUR }}"
+          echo "${{ secrets.RENDER_HOST }}"
           
       - name: Deploy to Render.com server
         uses: easingthemes/ssh-deploy@v2
