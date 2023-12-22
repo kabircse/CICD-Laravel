@@ -20,7 +20,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Run commands in the nested folder  
+      - name: Installing Dependencies 
         working-directory: src
         run: composer install --verbose --no-ansi --no-interaction --no-scripts --no-progress --no-dev
         # -q
@@ -47,11 +47,11 @@ jobs:
           touch database/database.sqlite
           
       - name: Execute tests (Unit and Feature tests) via PHPUnit
+        working-directory: src
         env:
           DB_CONNECTION: sqlite
           DB_DATABASE: database/database.sqlite
         run: vendor/bin/phpunit
-        working-directory: src
 
       - name: Deploy to Render.com server
         uses: easingthemes/ssh-deploy@v2
