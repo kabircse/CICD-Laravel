@@ -58,12 +58,9 @@ jobs:
 
     steps:   
       - name: Deploy to Render.com server over ssh
-        #needs: [test]           # test job need to pass 
-        uses: appleboy/ssh-action@v1.0.0
+        #needs: [build]           # test job need to pass 
+        uses: johnbeynon/render-deploy-action@v0.0.8
         with:
-          host: ${{ secrets.RENDER_HOST }}
-          username: ${{ secrets.RENDER_USER }}
-          key: ${{ secrets.RENDER_SSH_KEY }}
-          script: whoami
-          # source: src                          #source directory that needs to be transferred/deployed to the target server.
-          # target: /var/www/html/your-app      #Where the project will be deployed on the server
+          service-id: ${{ secrets.RENDER_SERVICE_ID }}
+          api-key: ${{ secrets.RENDER_API_KEY }}
+          wait-for-success: true
