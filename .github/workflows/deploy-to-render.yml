@@ -1,4 +1,5 @@
-name: Laravel
+# CD to easingthemes/ssh-deploy in render.com server
+name: Laravel Application
 
 on:
   push:
@@ -33,3 +34,13 @@ jobs:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
       run: vendor/bin/phpunit
+    
+    - name: Deploy to Render.com server
+        uses: easingthemes/ssh-deploy@v2
+        with:
+          server: your-render-instance.compute-render.com  # Replace with your Render SSH server
+          username: render  # Replace with your Render SSH username
+          key: ${{ secrets.RENDER_SSH_KEY }}
+          args: '-o StrictHostKeyChecking=no'  # Optional: Skip host key checking
+          source: ./src                          #source directory that needs to be transferred/deployed to the target server.
+          target: /var/www/html/your-app      #Where the project will be deployed on the server
